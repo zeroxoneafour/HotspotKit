@@ -7,10 +7,13 @@
         <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
         <GenerateLibraryLayout>true</GenerateLibraryLayout>
         <WinUISDKReferences>false</WinUISDKReferences>
+        <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

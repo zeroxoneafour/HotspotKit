@@ -59,8 +59,8 @@ public class WiFiAdapterService : IWiFiAdapterService, IEnableLogger
     {
         this.Log().Debug("Hotspot stopping");
         _runningAdapter.StopTethering();
-        _netShService.ConnectInterface(_runningAdapter.Name, _runningAdapter.ProfileName);
         _netShService.EnableAutoConfig(_runningAdapter.Name);
+        _netShService.ConnectInterface(_runningAdapter.Name, _runningAdapter.ProfileName);
         this.Log().Debug("Hotspot stopped");
         _runningAdapter = null;
     }
