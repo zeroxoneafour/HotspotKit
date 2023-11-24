@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:HotspotKit.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
+        x:Class="HotspotKit.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:views="using:HotspotKit.Views"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="HotspotKit">
+        
+        <views:Manager DataContext="{Binding Manager}"
+                       Width="250"
+                       Height="450"/>
+    
+</Window>
