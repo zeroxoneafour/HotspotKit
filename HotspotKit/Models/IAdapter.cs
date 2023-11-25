@@ -1,8 +1,10 @@
-﻿namespace HotspotKit.Models;
+﻿using System;
+
+namespace HotspotKit.Models;
 
 public interface IAdapter
 {
-    public string Id { get; }
+    public Guid Id { get; }
     public string Name { get; }
     public string ProfileName { get; }
     public void StartTethering();

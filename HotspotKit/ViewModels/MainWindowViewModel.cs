@@ -11,5 +11,5 @@ public class MainWindowViewModel : ViewModelBase
         Manager = new ManagerViewModel(_wifiAdapterService);
     }
 
-    public ManagerViewModel Manager { get; }
+    public ManagerViewModel Manager { get; private set; }
 }

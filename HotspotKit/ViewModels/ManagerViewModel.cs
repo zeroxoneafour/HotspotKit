@@ -1,18 +1,15 @@
 ﻿using System.Collections.ObjectModel;
-using System.Reactive;
 using System.Windows.Input;
-using Avalonia.Logging;
 using HotspotKit.Models;
 using HotspotKit.Services;
-using Microsoft.VisualBasic.Logging;
 using ReactiveUI;
-using Splat;
 
 namespace HotspotKit.ViewModels;
 
 public class ManagerViewModel : ViewModelBase
 {
     private readonly IWiFiAdapterService _wifiAdapterService;
+
     public ManagerViewModel(IWiFiAdapterService wifiAdapterService)
     {
         _wifiAdapterService = wifiAdapterService;
@@ -34,15 +31,10 @@ public class ManagerViewModel : ViewModelBase
         else
         {
             IsStartStopEnabled = false;
-            _wifiAdapterService.StartHotspot(AdapterIndex, DisableAutoConf);
+            _wifiAdapterService.StartHotspot(SourceIndex, DisableAutoConf);
             StartStopButtonText = "Stop";
             IsStartStopEnabled = true;
         }
-    }
-    
-    private void StartHotspot()
-    {
-        
     }
 
     public ICommand StartStopButtonCommand { get; private set; }
@@ -54,25 +46,40 @@ public class ManagerViewModel : ViewModelBase
         get => _isStartStopEnabled;
         set => this.RaiseAndSetIfChanged(ref _isStartStopEnabled, value);
     }
+
     private string _startStopButtonText = "Start";
+
     public string StartStopButtonText
     {
         get => _startStopButtonText;
         set => this.RaiseAndSetIfChanged(ref _startStopButtonText, value);
     }
 
-    private int _adapterIndex = 0;
+    private int _sourceIndex = 0;
+
+    public int SourceIndex
+    {
+        get => _sourceIndex;
+        set => this.RaiseAndSetIfChanged(ref _sourceIndex, value);
+    }
 
     public int AdapterIndex
     {
-        get => _adapterIndex;
-        set => this.RaiseAndSetIfChanged(ref _adapterIndex, value);
+        get => _wifiAdapterService.AdapterIndex;
+        set
+        {
+            int a = 0;
+            this.RaiseAndSetIfChanged(ref a, value);
+            _wifiAdapterService.AdapterIndex = a;
+        }
     }
-    
+
     private bool _disableAutoConf = false;
     public bool DisableAutoConf
     {
         get => _disableAutoConf;
         set => this.RaiseAndSetIfChanged(ref _disableAutoConf, value);
     }
+
+    public bool IsAdministrator => _wifiAdapterService.IsAdministrator;
 }

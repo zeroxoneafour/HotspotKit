@@ -16,7 +16,7 @@ public class Adapter : IAdapter
         ReloadTetheringManager();
     }
 
-    public string Id => _adapter.NetworkAdapterId.ToString();
+    public Guid Id => _adapter.NetworkAdapterId;
     public string Name => _netShInfo.Name;
     public string ProfileName { get; private set; }
 

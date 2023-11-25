@@ -9,9 +9,15 @@
         xmlns:views="using:HotspotKit.Views"
         Icon="/Assets/avalonia-logo.ico"
         Title="HotspotKit">
-        
-        <views:Manager DataContext="{Binding Manager}"
-                       Width="250"
-                       Height="450"/>
+    <DockPanel Margin="10"
+               Width="250"
+               Height="450">
+        <TextBlock DockPanel.Dock="Top"
+                   HorizontalAlignment="Center"
+                   FontSize="32">
+            Hotspot Kit
+        </TextBlock>
+        <views:Manager DataContext="{Binding Manager}"/>
+    </DockPanel>
     
 </Window>
