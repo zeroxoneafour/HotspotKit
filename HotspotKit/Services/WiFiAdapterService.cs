@@ -17,7 +17,7 @@ public class WiFiAdapterService : IWiFiAdapterService, IEnableLogger
 
     public WiFiAdapterService()
     {
-        IsAdministrator = (new WindowsPrincipal(WindowsIdentity.GetCurrent()))
+        IsAdministrator = new WindowsPrincipal(WindowsIdentity.GetCurrent())
             .IsInRole(WindowsBuiltInRole.Administrator);
         GetAdapters();
         _adapterIndex = GetAdapterIndex();
